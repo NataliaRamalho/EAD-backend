@@ -25,5 +25,20 @@ module.exports = {
         const { password} = req.body
         const user = User.update({ password }, {where: { id: id}})
         return res.json(user)
+    },
+    async auth(req, res){
+        const {email, password} = req.body
+        const users = User.findAll()
+        users.map(user=>{
+            if(user.email===email){
+                if(user.password===password){
+                return res.json({auth: true, message:"Bem vindo!", user})
+                }else{
+                    return res.json({auth: false, message: "Senha incorreta"})
+                }
+            }else{
+                return res.json({auth: false, message: "Email não cadastrado"})
+            }
+        })
     }
 }
