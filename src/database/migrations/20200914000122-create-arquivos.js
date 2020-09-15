@@ -18,6 +18,10 @@ module.exports = {
           type: Sequelize.STRING,
           allowNull: false,
         },
+        key: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
         size: {
           type: Sequelize.STRING,
           allowNull: false

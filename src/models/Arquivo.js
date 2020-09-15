@@ -4,6 +4,7 @@ class Arquivo extends Model {
     static init(sequelize) {
         super.init({
            name: DataTypes.STRING,
+           key: DataTypes.STRING,
            size: DataTypes.STRING,
            type: DataTypes.STRING,
            url: DataTypes.STRING
