@@ -28,7 +28,8 @@ module.exports = {
     },
     async auth(req, res){
         const {email, password} = req.body
-        const users = User.findAll()
+        const users = await User.findAll()
+      
         users.map(user=>{
             if(user.email===email){
                 if(user.password===password){
@@ -36,9 +37,10 @@ module.exports = {
                 }else{
                     return res.json({auth: false, message: "Senha incorreta"})
                 }
-            }else{
-                return res.json({auth: false, message: "Email não cadastrado"})
             }
         })
+                return res.json({auth: false, message: "Email não cadastrado"})
+            
+       
     }
 }
