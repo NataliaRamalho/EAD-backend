@@ -6,7 +6,7 @@ module.exports = {
 
         return res.json(users)
     },
-    async indexId(req, res){
+    async indexId(req, res) {
         const { user_id } = req.params
 
         const user = await User.findByPk(user_id)
@@ -20,25 +20,56 @@ module.exports = {
 
         return res.json(user)
     },
-    async update(req, res){
+    async update(req, res) {
         const { id } = req.params
-        const { password} = req.body
-        const user = User.update({ password }, {where: { id: id}})
+        const { password } = req.body
+        const user = User.update({ password }, { where: { id: id } })
         return res.json(user)
     },
-    async auth(req, res){
-        const {email, password} = req.body
-        const users = User.findAll()
-        users.map(user=>{
-            if(user.email===email){
-                if(user.password===password){
-                return res.json({auth: true, message:"Bem vindo!", user})
-                }else{
-                    return res.json({auth: false, message: "Senha incorreta"})
+
+    async auth(req, res) {
+        const { email, password } = req.body
+        const users = await User.findAll()
+        a = true;
+
+        users.map(user => {
+            if (user.email === email) {
+                if (user.password === password) {
+                    return res.json({ auth: true, message: "Bem vindo!", user })
+                } else {
+                    a = false;
+                    // return res.json({auth: false, message: "Senha incorreta"})
                 }
-            }else{
-                return res.json({auth: false, message: "Email não cadastrado"})
+            } else {
+                a = false;
+                //return res.json({auth: false, message: "Email não cadastrado"})
             }
         })
+
+        return res.json({ auth: false, message: "Email ou senha não encontrada" })
+
     }
+    
+
+
+
 }
+
+
+// async auth(req, res){
+//     const {email, password} = req.body
+//     const users = await User.findAll({ })
+//     console.log(users)
+//     users.map(user=>{
+//         if(user.email===email){
+//             if(user.password===password){
+//             return res.json({auth: true, message:"Bem vindo!", user})
+//             }else{
+//                 return res.json({auth: false, message: "Senha incorreta"})
+//             }
+//         }else{
+//             return res.json({auth: false, message: "Email não cadastrado"})
+//         }
+//     })
+//     // res.send('a')
+// }
