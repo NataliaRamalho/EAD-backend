@@ -21,4 +21,4 @@ app.use(morgan('dev'))
 
 app.use(cors())
 app.use(routes)
-app.listen(3001)
+app.listen(process.env.PORT || 3001)
