@@ -9,7 +9,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 require('./database')
-app.use(cors())
+app.use(cors({Access-Control-Allow-Origin: *}))
 app.use(express.json())
 
 
