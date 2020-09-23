@@ -9,7 +9,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 require('./database')
-app.use(cors({origin: process.env.REACT_APP_API_URL}))
+app.use(cors())
 app.use(express.json())
 
 
