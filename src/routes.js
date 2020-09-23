@@ -9,13 +9,21 @@ const UserController = require('./controllers/UserController')
 
 const ArquivoController = require('./controllers/ArquivoController')
 
+routes.use((req,res)=>{
+  res.setHeader("Access-Control-Allow-Origin", "*"),
+  res.setHeader("Access-Control-Allow-Credentials", "true"),
+  res.setHeader("Access-Control-Max-Age", "1800"),
+  res.setHeader("Access-Control-Allow-Headers", "content-type"),
+  res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" )
+})
+
 
 routes.get('/', (req,res)=>{
-  res.setHeader("Access-Control-Allow-Origin": "https://educanauta-frontend.herokuapp.com")
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
+ // res.setHeader("Access-Control-Allow-Origin": "https://educanauta-frontend.herokuapp.com")
+ // res.setHeader("Access-Control-Allow-Credentials", "true");
+ // res.setHeader("Access-Control-Max-Age", "1800");
+ // res.setHeader("Access-Control-Allow-Headers", "content-type");
+ // res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
   return res.send('eai')
 })
 routes.get('/users', UserController.index)
