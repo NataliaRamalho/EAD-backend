@@ -11,7 +11,7 @@ const ArquivoController = require('./controllers/ArquivoController')
 
 
 routes.get('/', (req,res)=>{
-  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.setHeader("Access-Control-Allow-Origin", "https://educanauta-frontend.herokuapp.com")
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Max-Age", "1800");
   res.setHeader("Access-Control-Allow-Headers", "content-type");
