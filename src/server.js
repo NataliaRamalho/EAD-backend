@@ -9,7 +9,17 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 require('./database')
-app.use(cors())
+
+app.use(cors({
+  origin: process.env.REACT_APP_API_URL
+}));
+
+app.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', process.env.REACT_APP_API_URL);
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS, POST, PUT, DELETE');
+  next();
+});
+
 app.use(express.json())
 
 
