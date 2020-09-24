@@ -11,14 +11,12 @@ const morgan = require('morgan')
 require('./database')
 
 app.use(cors({
-  origin: process.env.REACT_APP_API_URL
+  origin: process.env.REACT_APP_API_URL,
+  methods: 'GET, OPTIONS, POST, PUT, DELETE',
+  credentials: true,
+  allowedHeaders: 'X-Requested-With,content-type'
 }));
 
-app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', process.env.REACT_APP_API_URL);
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS, POST, PUT, DELETE');
-  next();
-});
 
 app.use(express.json())
 
