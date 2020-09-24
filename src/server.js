@@ -11,10 +11,8 @@ const morgan = require('morgan')
 require('./database')
 
 app.use(cors({
-  origin: process.env.REACT_APP_API_URL,
-  methods: 'GET, OPTIONS, POST, PUT, DELETE',
-  credentials: true,
-  allowedHeaders: 'X-Requested-With,content-type'
+  origin: [process.env.REACT_APP_API_URL, "https://educanauta-frontend.herokuapp.com" ],
+  methods: 'GET, HEAD, PATCH, POST, PUT, DELETE'
 }));
 
 
