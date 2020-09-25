@@ -12,7 +12,7 @@ require('./database')
 
 app.use(cors({
   origin: [process.env.REACT_APP_API_URL, "https://educanauta-frontend.herokuapp.com" ],
-  methods: 'GET, HEAD, PATCH, POST, PUT, DELETE'
+  methods: 'GET, HEAD, PATCH, POST, PUT, DELETE, OPTIONS'
 }));
 
 
